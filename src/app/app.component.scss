@@ -83,14 +83,48 @@ section {
   font-size: xx-small;
 }
 
+#ruler-row {
+  margin-left: 10px;
+}
+
+.ruler {
+  margin: 0;
+  padding: 10px;
+}
+
+#outer-chart-container {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  overflow-x: scroll;
+}
+
+#outer-container {
+  position: relative;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+}
+
+#ruler-container {
+  position: relative;
+  margin-left: 10px;
+  z-index: 2;
+}
+
+.rule {
+  border-right: 1px solid white;
+}
+
 #chart-main-container {
   height: auto;
-  overflow-y: auto;
+  margin-left: 10px;
 }
 
 #chart-main {
   position: relative;
-  padding: 10px;
+  padding: 0 10px 10px 0;
+  margin: 0 10px 10px 0;
   overflow-y: auto;
 }
 
@@ -106,12 +140,7 @@ section {
   position: relative;
   overflow-x: scroll;
   overflow-y: hidden;
-  width: 500%;
-  z-index: 9999;
-
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
+  transition: transform 0.167s ease-in-out;
 }
 
 #chart-schedule {
@@ -119,6 +148,7 @@ section {
   border: 1px solid white;
   overflow-y: hidden;
   background-color: darkslategray;
+  height: auto;
 }
 
 #chart-tracks {

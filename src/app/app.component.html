@@ -1,6 +1,6 @@
 <div class="main">
-  <header>
-    <div fxFlex>
+  <section fxFlex fxLayout="column">
+    <div fxFlex="50px">
       <div fxFlex="150px">TOP CONTROLS</div>
       <mat-radio-group
         aria-label="Select days to display"
@@ -11,62 +11,76 @@
         }}</mat-radio-button>
       </mat-radio-group>
     </div>
-  </header>
-  <section>
-    <div id="chart-main-container">
-      <div id="chart-main" fxFlex>
-        <div fxFlex="100px">
-          <div id="chart-labels" fxFlex fxLayout="column">
-            <ng-container *ngFor="let site of service.dataBySite | keyvalue">
-              <div fxFlex="60px" class="chart-label">{{ site.key }}</div>
-              <div
-                fxFlex="60px"
-                class="chart-subtrack-label"
-                *ngFor="let t of site.value | keyvalue"
-              >
-                {{ t.key }}
-              </div>
-            </ng-container>
-          </div>
-        </div>
-
-        <div
-          id="chart-schedule-container"
-          [style.width.%]="700 - (daySelected - 1) * 100"
-        >
-          <div
-            id="chart-schedule"
-            [style.width.%]="700 - (daySelected - 1) * 100"
-          >
-            <div fxFlex fxLayout="column" id="chart-tracks">
+    <div fxFlex fxLayout="column" id="outer-container">
+      <div id="chart-main-container">
+        <div id="chart-main" fxFlex>
+          <div fxFlex="100px">
+            <div id="chart-labels" fxFlex fxLayout="column">
               <ng-container *ngFor="let site of service.dataBySite | keyvalue">
-                <div fxFlex="60px">
-                  <div fxFill fxLayout="row" class="chart-label">&nbsp;</div>
-                </div>
-                <div fxFlex="60px" *ngFor="let t of site.value | keyvalue">
-                  <ng-container *ngFor="let v of t.value">
-                    <div
-                      fxLayout="column"
-                      class="region"
-                      [style.left.%]="service.calcLeft(v.start)"
-                      [style.width.%]="service.calcWidth(v.start, v.stop)"
-                    >
-                      <div fxFlex class="mission">
-                        {{ v.mission }}
-                      </div>
-
-                      <div fxFlex class="start">
-                        {{ v.start | date: "MM/dd/yyyy HH:mm:ss" }}
-                      </div>
-                      <div fxFlex class="stop">
-                        {{ v.stop | date: "MM/dd/yyyy HH:mm:ss" }}
-                      </div>
-                    </div>
-                  </ng-container>
+                <div fxFlex="60px" class="chart-label">{{ site.key }}</div>
+                <div
+                  fxFlex="60px"
+                  class="chart-subtrack-label"
+                  *ngFor="let t of site.value | keyvalue"
+                >
+                  {{ t.key }}
                 </div>
               </ng-container>
             </div>
           </div>
+
+          <div
+            id="chart-schedule-container"
+            [style.width.%]="700 - (daySelected - 1) * 100"
+          >
+            <div
+              id="chart-schedule"
+              [style.width.%]="700 - (daySelected - 1) * 100"
+            >
+              <div fxFlex fxLayout="column" id="chart-tracks">
+                <ng-container
+                  *ngFor="let site of service.dataBySite | keyvalue"
+                >
+                  <div fxFlex="60px">
+                    <div fxFill fxLayout="row" class="chart-label">&nbsp;</div>
+                  </div>
+                  <div fxFlex="60px" *ngFor="let t of site.value | keyvalue">
+                    <ng-container *ngFor="let v of t.value">
+                      <div
+                        fxLayout="column"
+                        class="region"
+                        [style.left.%]="service.calcLeft(v.start)"
+                        [style.width.%]="service.calcWidth(v.start, v.stop)"
+                      >
+                        <div fxFlex class="mission">
+                          {{ v.mission }}
+                        </div>
+
+                        <div fxFlex class="start">
+                          {{ v.start | date: "MM/dd/yyyy HH:mm:ss" }}
+                        </div>
+                        <div fxFlex class="stop">
+                          {{ v.stop | date: "MM/dd/yyyy HH:mm:ss" }}
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      fxFlex="40px"
+      id="ruler-container"
+      [style.width.%]="700 - (daySelected - 1) * 100"
+    >
+      <div fxFlex="100px"></div>
+      <div fxFlex>
+        <div fxFlex class="rule" *ngFor="let date of dates">
+          {{ date | date: "MM/dd/yyyy" }}
         </div>
       </div>
     </div>

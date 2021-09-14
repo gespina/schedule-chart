@@ -56,6 +56,14 @@ export class ScheduleService {
     return this._dateRange;
   }
 
+  get earliestDate() {
+    return this._dateRange.earliest;
+  }
+
+  get latestDate() {
+    return this._dateRange.latest;
+  }
+
   get totalSeconds() {
     return (
       this._dateRange.latest!.getTime() - this._dateRange.earliest!.getTime()

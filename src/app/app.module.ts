@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
-import { NgScrollbarModule } from 'ngx-scrollbar';
 import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 @NgModule({
@@ -19,7 +18,6 @@ import { MatRadioModule } from '@angular/material/radio';
     FlexLayoutModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgScrollbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
